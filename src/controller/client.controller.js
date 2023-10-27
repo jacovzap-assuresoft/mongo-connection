@@ -1,4 +1,4 @@
-import { getAllClientsMongooseRepository } from '../repositories/client.repository.js'
+import { getAllClientsMongooseRepository, createClientMongooseRepository } from '../repositories/client.repository.js'
 
 export const getAllClientsMongoose = async (req, res) => {
   try {
@@ -9,7 +9,14 @@ export const getAllClientsMongoose = async (req, res) => {
   }
 }
 
-export const createClientMongoose = async (req, res) => {}
+export const createClientMongoose = async (req, res) => {
+  try {
+    const dbResponse = await createClientMongooseRepository(req.body)
+    return dbResponse
+  } catch {
+    res.status(500).json({ message: 'Something went wrong' })
+  }
+}
 
 export const updateClientMongoose = async (req, res) => {}
 
