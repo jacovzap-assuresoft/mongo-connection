@@ -4,6 +4,7 @@ import {
   createClientMongoDB,
   updateClientMongoDB,
   deleteClientMongoDB,
+  getAllClientsMongoDB,
   createClientMongoose,
   updateClientMongoose,
   deleteClientMongoose
@@ -16,8 +17,9 @@ router.post('/create-client-mongoose', createClientMongoose)
 router.put('/update-client-mongoose', updateClientMongoose)
 router.delete('/delete-client-mongoose', deleteClientMongoose)
 
+router.get('/get-all-clients-mongodb', getAllClientsMongoDB)
 router.post('/create-client-mongodb', createClientMongoDB)
-router.put('/update-client-mongoose', updateClientMongoDB)
-router.delete('/delete-client-mongodb', deleteClientMongoDB)
+router.put('/update-client-mongodb/:id', updateClientMongoDB)
+router.delete('/delete-client-mongodb/:id', deleteClientMongoDB)
 
 export default router
