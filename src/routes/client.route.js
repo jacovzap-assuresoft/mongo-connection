@@ -14,7 +14,7 @@ const router = Router()
 router.get('/get-all-clients-mongoose', getAllClientsMongoose)
 router.post('/create-client-mongoose', createClientMongoose)
 router.put('/update-client-mongoose/:id', updateClientMongoose)
-router.delete('/delete-client-mongoose', deleteClientMongoose)
+router.delete('/delete-client-mongoose/:id', deleteClientMongoose)
 
 router.post('/create-client-mongodb', createClientMongoDB)
 router.put('/update-client-mongoose', updateClientMongoDB)
