@@ -34,6 +34,5 @@ export const updateClientMongoDBRepository = async (id, clientData) => {
 }
 
 export const deleteClientMongoDBRepository = async (id) => {
-    console.log(id)
     await clients.deleteOne({ _id: id })
 }

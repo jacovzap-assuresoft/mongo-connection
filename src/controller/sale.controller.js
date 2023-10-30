@@ -52,6 +52,7 @@ export const getAllSalesMongoose = async (req, res) => {
         clientId: id,
         total: dbResponse
       }
+
       return res.json(response)
     } catch {
       res.status(500).json({ message: 'Something went wrong' })
@@ -67,6 +68,7 @@ export const getAllSalesMongoose = async (req, res) => {
         item: item,
         total: dbResponse
       }
+
       return res.json(response)
     } catch {
       res.status(500).json({ message: 'Something went wrong' })
