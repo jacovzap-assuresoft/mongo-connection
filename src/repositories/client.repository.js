@@ -29,9 +29,9 @@ export const createClientMongoDBRepository = async clientData => {
 }
 
 export const updateClientMongoDBRepository = async (id, clientData) => {
-  return clients.updateOne({ _id: id }, { $set: clientData })
+  return clients.updateOne({ _id: new ObjectId(id) }, { $set: clientData })
 }
 
 export const deleteClientMongoDBRepository = async id => {
-  await clients.deleteOne({ _id: id })
+  await clients.deleteOne({ _id: new ObjectId(id) })
 }
