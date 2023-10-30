@@ -29,7 +29,10 @@ export const createClientMongoose = async (req, res) => {
 
 export const updateClientMongoose = async (req, res) => {
   try {
-    const dbResponse = await updateClientMongooseRepository(req.params.id, req.body)
+    const dbResponse = await updateClientMongooseRepository(
+      req.params.id,
+      req.body
+    )
     return res.json(dbResponse)
   } catch {
     res.status(500).json({ message: 'Something went wrong' })
@@ -38,7 +41,10 @@ export const updateClientMongoose = async (req, res) => {
 
 export const deleteClientMongoose = async (req, res) => {
   try {
-    const dbResponse = await deleteClientMongooseRepository(req.params.id, req.body)
+    const dbResponse = await deleteClientMongooseRepository(
+      req.params.id,
+      req.body
+    )
     return res.json(dbResponse)
   } catch {
     res.status(500).json({ message: 'Something went wrong' })

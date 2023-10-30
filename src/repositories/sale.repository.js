@@ -1,7 +1,7 @@
 import Sale from '../models/Sale.js'
 
 export const getAllSalesMongooseRepository = async () => {
-    return Sale.find()
+    return Sale.find().populate('clientId')
 }
 
 export const createSaleMongooseRepository = async (saleData) => {
