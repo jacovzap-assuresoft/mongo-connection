@@ -1,6 +1,8 @@
 import {
   getAllClientsMongooseRepository,
   createClientMongooseRepository,
+  updateClientMongooseRepository,
+  deleteClientMongooseRepository,
   getAllClientsMongoDBRepository,
   createClientMongoDBRepository,
   updateClientMongoDBRepository,
@@ -19,13 +21,29 @@ export const getAllClientsMongoose = async (req, res) => {
 export const createClientMongoose = async (req, res) => {
   try {
     const dbResponse = await createClientMongooseRepository(req.body)
-    return dbResponse
+    return res.json(dbResponse)
   } catch {
     res.status(500).json({ message: 'Something went wrong' })
   }
 }
-export const updateClientMongoose = async (req, res) => {}
-export const deleteClientMongoose = async (req, res) => {}
+
+export const updateClientMongoose = async (req, res) => {
+  try {
+    const dbResponse = await updateClientMongooseRepository(req.params.id, req.body)
+    return res.json(dbResponse)
+  } catch {
+    res.status(500).json({ message: 'Something went wrong' })
+  }
+}
+
+export const deleteClientMongoose = async (req, res) => {
+  try {
+    const dbResponse = await deleteClientMongooseRepository(req.params.id, req.body)
+    return res.json(dbResponse)
+  } catch {
+    res.status(500).json({ message: 'Something went wrong' })
+  }
+}
 
 export const getAllClientsMongoDB = async (req, res) => {
   try {
