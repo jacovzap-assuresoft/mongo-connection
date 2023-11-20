@@ -1,20 +1,20 @@
 import { Router } from 'express'
 import {
-  getAllSalesMongoose,
-  createSaleMongoose,
-  updateSaleMongoose,
-  deleteSaleMongoose,
+  getAllSales,
+  createSale,
+  updateSale,
+  deleteSale,
   clientSalesTotal,
   salesTotalByItem,
 } from '../controller/sale.controller'
 
 const router = Router()
 
-router.get('/', getAllSalesMongoose)
+router.get('/', getAllSales)
 router.get('/client-sum/:id', clientSalesTotal)
 router.get('/item/:item', salesTotalByItem)
-router.post('/', createSaleMongoose)
-router.put('/:id', updateSaleMongoose)
-router.delete('/:id', deleteSaleMongoose)
+router.post('/', createSale)
+router.put('/:id', updateSale)
+router.delete('/:id', deleteSale)
 
 export default router

@@ -1,19 +1,19 @@
 import SaleSchema from '../models/Sale'
 import { Sale } from '../types/types'
 
-export const getAllSalesMongooseRepository = async () => {
+export const getAllSalesRepository = async () => {
     return SaleSchema.find().populate('clientId')
 }
 
-export const createSaleMongooseRepository = async (saleData: Sale) => {
+export const createSaleRepository = async (saleData: Sale) => {
     return SaleSchema.create(saleData)
 }
 
-export const updateSaleMongooseRepository = async (saleId: string, saleData: Sale) => {
+export const updateSaleRepository = async (saleId: string, saleData: Sale) => {
     return SaleSchema.findByIdAndUpdate(saleId, saleData)
 }
 
-export const deleteSaleMongooseRepository = async (saleId: string) => {
+export const deleteSaleRepository = async (saleId: string) => {
     return SaleSchema.findByIdAndRemove(saleId)
 }
 

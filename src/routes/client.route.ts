@@ -1,16 +1,16 @@
 import { Router } from 'express'
 import {
-  getAllClientsMongoose,
-  createClientMongoose,
-  updateClientMongoose,
-  deleteClientMongoose
+  getAllClients,
+  createClient,
+  updateClient,
+  deleteClient
 } from '../controller/client.controller'
 
 const router = Router()
 
-router.get('/:id?', getAllClientsMongoose)
-router.post('/', createClientMongoose)
-router.put('/:id', updateClientMongoose)
-router.delete('/:id', deleteClientMongoose)
+router.get('/:id?', getAllClients)
+router.post('/', createClient)
+router.put('/:id', updateClient)
+router.delete('/:id', deleteClient)
 
 export default router

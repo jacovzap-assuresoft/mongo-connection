@@ -1,34 +1,34 @@
 import { Request, Response } from 'express'
 import {
-  getAllSalesMongooseRepository,
-  createSaleMongooseRepository,
-  updateSaleMongooseRepository,
-  deleteSaleMongooseRepository,
+  getAllSalesRepository,
+  createSaleRepository,
+  updateSaleRepository,
+  deleteSaleRepository,
   clientSalesTotalRepository,
   salesTotalByItemRepository
 } from '../repositories/sale.repository'
 
-export const getAllSalesMongoose = async (req: Request, res: Response) => {
+export const getAllSales = async (req: Request, res: Response) => {
   try {
-    const sales = await getAllSalesMongooseRepository()
+    const sales = await getAllSalesRepository()
     res.status(200).json(sales)
   } catch {
     res.status(500).json({ message: 'Something went wrong' })
   }
 }
 
-export const createSaleMongoose = async (req: Request, res: Response) => {
+export const createSale = async (req: Request, res: Response) => {
   try {
-    const dbResponse = await createSaleMongooseRepository(req.body)
+    const dbResponse = await createSaleRepository(req.body)
     return res.json(dbResponse)
   } catch {
     res.status(500).json({ message: 'Something went wrong' })
   }
 }
 
-export const updateSaleMongoose = async (req: Request, res: Response) => {
+export const updateSale = async (req: Request, res: Response) => {
   try {
-    const dbResponse = await updateSaleMongooseRepository(
+    const dbResponse = await updateSaleRepository(
       req.params.id,
       req.body
     )
@@ -38,9 +38,9 @@ export const updateSaleMongoose = async (req: Request, res: Response) => {
   }
 }
 
-export const deleteSaleMongoose = async (req: Request, res: Response) => {
+export const deleteSale = async (req: Request, res: Response) => {
   try {
-    const dbResponse = await deleteSaleMongooseRepository(
+    const dbResponse = await deleteSaleRepository(
       req.params.id
     )
     return res.json(dbResponse)
