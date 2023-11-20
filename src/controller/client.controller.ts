@@ -25,7 +25,7 @@ export default class ClientController {
   async createClient(req: Request, res: Response) {
     try {
       const dbResponse = await this.reporsitory.createClientRepository(req.body)
-      return res.json(dbResponse)
+      return res.status(201).json(dbResponse)
     } catch (err: any) {
       res.status(500).json({ message: err.message, stack: err.stack })
     }
