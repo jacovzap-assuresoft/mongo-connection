@@ -6,7 +6,7 @@ import {
   deleteSaleMongoose,
   clientSalesTotal,
   salesTotalByItem,
-} from '../controller/sale.controller.js'
+} from '../controller/sale.controller'
 
 const router = Router()
 

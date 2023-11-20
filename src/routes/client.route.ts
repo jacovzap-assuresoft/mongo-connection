@@ -4,7 +4,7 @@ import {
   createClientMongoose,
   updateClientMongoose,
   deleteClientMongoose
-} from '../controller/client.controller.js'
+} from '../controller/client.controller'
 
 const router = Router()
 

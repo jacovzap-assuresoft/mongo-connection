@@ -1,20 +1,21 @@
+import { Request, Response } from 'express'
 import {
   getAllClientsMongooseRepository,
   createClientMongooseRepository,
   updateClientMongooseRepository,
   deleteClientMongooseRepository
-} from '../repositories/client.repository.js'
+} from '../repositories/client.repository'
 
-export const getAllClientsMongoose = async (req, res) => {
+export const getAllClientsMongoose = async (req: Request, res: Response) => {
   try {
     const clients = await getAllClientsMongooseRepository()
-    res.status(200).json(clients)
-  } catch {
-    res.status(500).json({ message: 'Something went wrong' })
+    return res.status(200).json(clients)
+  } catch (err: any) {
+    res.status(500).json({ message: err.message, stack: err.stack })
   }
 }
 
-export const createClientMongoose = async (req, res) => {
+export const createClientMongoose = async (req: Request, res: Response) => {
   try {
     const dbResponse = await createClientMongooseRepository(req.body)
     return res.json(dbResponse)
@@ -23,7 +24,7 @@ export const createClientMongoose = async (req, res) => {
   }
 }
 
-export const updateClientMongoose = async (req, res) => {
+export const updateClientMongoose = async (req: Request, res: Response) => {
   try {
     const dbResponse = await updateClientMongooseRepository(
       req.params.id,
@@ -35,11 +36,10 @@ export const updateClientMongoose = async (req, res) => {
   }
 }
 
-export const deleteClientMongoose = async (req, res) => {
+export const deleteClientMongoose = async (req: Request, res: Response) => {
   try {
     const dbResponse = await deleteClientMongooseRepository(
-      req.params.id,
-      req.body
+      req.params.id
     )
     return res.json(dbResponse)
   } catch {

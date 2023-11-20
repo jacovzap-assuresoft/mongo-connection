@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
+import { Client } from '../types/types'
 
-const clientSchema = new mongoose.Schema(
+const clientSchema = new mongoose.Schema<Client>(
   {
     name: { type: String, required: true, trim: true },
     lastName: { type: String, required: true, trim: true },

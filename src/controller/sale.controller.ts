@@ -1,3 +1,4 @@
+import { Request, Response } from 'express'
 import {
   getAllSalesMongooseRepository,
   createSaleMongooseRepository,
@@ -5,9 +6,9 @@ import {
   deleteSaleMongooseRepository,
   clientSalesTotalRepository,
   salesTotalByItemRepository
-} from '../repositories/sale.repository.js'
+} from '../repositories/sale.repository'
 
-export const getAllSalesMongoose = async (req, res) => {
+export const getAllSalesMongoose = async (req: Request, res: Response) => {
   try {
     const sales = await getAllSalesMongooseRepository()
     res.status(200).json(sales)
@@ -16,7 +17,7 @@ export const getAllSalesMongoose = async (req, res) => {
   }
 }
 
-export const createSaleMongoose = async (req, res) => {
+export const createSaleMongoose = async (req: Request, res: Response) => {
   try {
     const dbResponse = await createSaleMongooseRepository(req.body)
     return res.json(dbResponse)
@@ -25,7 +26,7 @@ export const createSaleMongoose = async (req, res) => {
   }
 }
 
-export const updateSaleMongoose = async (req, res) => {
+export const updateSaleMongoose = async (req: Request, res: Response) => {
   try {
     const dbResponse = await updateSaleMongooseRepository(
       req.params.id,
@@ -37,11 +38,10 @@ export const updateSaleMongoose = async (req, res) => {
   }
 }
 
-export const deleteSaleMongoose = async (req, res) => {
+export const deleteSaleMongoose = async (req: Request, res: Response) => {
   try {
     const dbResponse = await deleteSaleMongooseRepository(
-      req.params.id,
-      req.body
+      req.params.id
     )
     return res.json(dbResponse)
   } catch {
@@ -49,7 +49,7 @@ export const deleteSaleMongoose = async (req, res) => {
   }
 }
 
-export const clientSalesTotal = async (req, res) => {
+export const clientSalesTotal = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const dbResponse = await clientSalesTotalRepository(id)
@@ -65,7 +65,7 @@ export const clientSalesTotal = async (req, res) => {
   }
 }
 
-export const salesTotalByItem = async (req, res) => {
+export const salesTotalByItem = async (req: Request, res: Response) => {
   try {
     const { item } = req.params
     const dbResponse = await salesTotalByItemRepository(item)
