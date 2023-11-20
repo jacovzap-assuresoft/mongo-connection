@@ -4,7 +4,7 @@ import morgan from 'morgan'
 
 import userRouter from './routes/client.route.js'
 import saleRouter from './routes/sale.route.js'
-import database from './config/db.config.js'
+import _ from './config/db.config.js' // Mongo connection init
 
 const app = express()
 
@@ -12,6 +12,7 @@ app.use(morgan('dev'))
 app.use(cors())
 app.use(express.json())
 
-app.use('/api', userRouter, saleRouter)
+app.use('/sales', saleRouter)
+app.use('/clients', userRouter)
 
 export default app

@@ -1,10 +1,6 @@
 import { Router } from 'express'
 import {
   getAllClientsMongoose,
-  createClientMongoDB,
-  updateClientMongoDB,
-  deleteClientMongoDB,
-  getAllClientsMongoDB,
   createClientMongoose,
   updateClientMongoose,
   deleteClientMongoose
@@ -12,14 +8,9 @@ import {
 
 const router = Router()
 
-router.get('/get-all-clients-mongoose', getAllClientsMongoose)
-router.post('/create-client-mongoose', createClientMongoose)
-router.put('/update-client-mongoose/:id', updateClientMongoose)
-router.delete('/delete-client-mongoose/:id', deleteClientMongoose)
-
-router.get('/get-all-clients-mongodb', getAllClientsMongoDB)
-router.post('/create-client-mongodb', createClientMongoDB)
-router.put('/update-client-mongodb/:id', updateClientMongoDB)
-router.delete('/delete-client-mongodb/:id', deleteClientMongoDB)
+router.get('/:id?', getAllClientsMongoose)
+router.post('/', createClientMongoose)
+router.put('/:id', updateClientMongoose)
+router.delete('/:id', deleteClientMongoose)
 
 export default router

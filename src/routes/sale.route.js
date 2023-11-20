@@ -10,11 +10,11 @@ import {
 
 const router = Router()
 
-router.get('/get-all-sales-mongoose', getAllSalesMongoose)
-router.get('/client-sales-total/:id', clientSalesTotal)
-router.get('/item-sales-total/:item', salesTotalByItem)
-router.post('/create-sale-mongoose', createSaleMongoose)
-router.put('/update-sale-mongoose/:id', updateSaleMongoose)
-router.delete('/delete-sale-mongoose/:id', deleteSaleMongoose)
+router.get('/', getAllSalesMongoose)
+router.get('/client-sum/:id', clientSalesTotal)
+router.get('/item/:item', salesTotalByItem)
+router.post('/', createSaleMongoose)
+router.put('/:id', updateSaleMongoose)
+router.delete('/:id', deleteSaleMongoose)
 
 export default router
