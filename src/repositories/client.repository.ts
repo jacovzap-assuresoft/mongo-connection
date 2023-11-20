@@ -1,18 +1,21 @@
 import ClientSchema from '../models/Client'
 import { Client } from '../types/types'
 
-export const getAllClientsRepository = async () => {
-  return ClientSchema.find()
-}
+export default class ClientRepository {
 
-export const createClientRepository = async (clientData: Client) => {
-  return ClientSchema.create(clientData)
-}
+  async getAllClientsRepository() {
+    return ClientSchema.find()
+  }
 
-export const updateClientRepository = async (clientId: string, clientData: Client) => {
-  return ClientSchema.findByIdAndUpdate(clientId, clientData)
-}
+  async createClientRepository(clientData: Client) {
+    return ClientSchema.create(clientData)
+  }
 
-export const deleteClientRepository = async (clientId: string) => {
-  return ClientSchema.findByIdAndRemove(clientId)
+  async updateClientRepository(clientId: string, clientData: Client) {
+    return ClientSchema.findByIdAndUpdate(clientId, clientData)
+  }
+
+  async deleteClientRepository(clientId: string) {
+    return ClientSchema.findByIdAndRemove(clientId)
+  }
 }

@@ -1,18 +1,25 @@
 import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
-
-import userRouter from './routes/client.route'
-import saleRouter from './routes/sale.route'
 import './config/db.config' // Mongo connection init
 
-const app = express()
+import { RouterPath } from './types/types'
 
-app.use(morgan('dev'))
-app.use(cors())
-app.use(express.json())
+export default class Server {
 
-app.use('/sales', saleRouter)
-app.use('/clients', userRouter)
+  private app = express()
 
-export default app
+  public constructor(paths: Array<RouterPath>) {
+    this.app.use(morgan('dev'))
+    this.app.use(cors())
+    this.app.use(express.json())
+
+    paths.forEach((routerPath) => {
+      this.app.use(routerPath.path, routerPath.router)
+    })
+  }
+
+  public getApp() {
+    return this.app
+  }
+}

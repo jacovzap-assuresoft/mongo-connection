@@ -1,16 +1,25 @@
 import { Router } from 'express'
-import {
-  getAllClients,
-  createClient,
-  updateClient,
-  deleteClient
-} from '../controller/client.controller'
+import ClientController from '../controller/client.controller'
+import { ModelRouter} from '../types/types'
 
-const router = Router()
+export default class ClientRouter implements ModelRouter {
 
-router.get('/:id?', getAllClients)
-router.post('/', createClient)
-router.put('/:id', updateClient)
-router.delete('/:id', deleteClient)
+  private router: Router = Router()
+  private controller: ClientController
 
-export default router
+  public readonly PATH = '/clients'
+
+  public constructor(controller: ClientController) {
+    this.controller = controller
+
+    this.router.get('/:id?', this.controller.getAllClients)
+    this.router.post('/', this.controller.createClient)
+    this.router.put('/:id', this.controller.updateClient)
+    this.router.delete('/:id', this.controller.deleteClient)
+  }
+
+  public getRouterPath() {
+    return { router: this.router, path: this.PATH }
+  }
+
+}
