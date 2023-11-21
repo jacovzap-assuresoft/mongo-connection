@@ -1,6 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
+import swaggerUi from 'swagger-ui-express'
+
+import swaggerSpecs from '../swagger'
 import './config/db.config' // Mongo connection init
 
 import { RouterPath } from './types/types'
@@ -17,6 +20,7 @@ export default class Server {
     paths.forEach((routerPath) => {
       this.app.use(routerPath.path, routerPath.router)
     })
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
   }
 
   public getApp() {

@@ -3,19 +3,19 @@ import { Client } from '../types/types'
 
 export default class ClientRepository {
 
-  async getAllClientsRepository() {
+  async getAllClients() {
     return ClientSchema.find()
   }
 
-  async createClientRepository(clientData: Client) {
+  async createClient(clientData: Client) {
     return ClientSchema.create(clientData)
   }
 
-  async updateClientRepository(clientId: string, clientData: Client) {
+  async updateClient(clientId: string, clientData: Client) {
     return ClientSchema.findByIdAndUpdate(clientId, clientData)
   }
 
-  async deleteClientRepository(clientId: string) {
+  async deleteClient(clientId: string) {
     return ClientSchema.findByIdAndRemove(clientId)
   }
 }

@@ -15,7 +15,7 @@ export default class ClientController {
 
   async getAllClients(_req: Request, res: Response) {
     try {
-      const clients = await this.reporsitory.getAllClientsRepository()
+      const clients = await this.reporsitory.getAllClients()
       return res.status(200).json(clients)
     } catch (err: any) {
       res.status(500).json({ message: err.message, stack: err.stack })
@@ -24,8 +24,8 @@ export default class ClientController {
 
   async createClient(req: Request, res: Response) {
     try {
-      const dbResponse = await this.reporsitory.createClientRepository(req.body)
-      return res.json(dbResponse)
+      const dbResponse = await this.reporsitory.createClient(req.body)
+      return res.status(201).json(dbResponse)
     } catch (err: any) {
       res.status(500).json({ message: err.message, stack: err.stack })
     }
@@ -33,7 +33,7 @@ export default class ClientController {
 
   async updateClient(req: Request, res: Response) {
     try {
-      const dbResponse = await this.reporsitory.updateClientRepository(
+      const dbResponse = await this.reporsitory.updateClient(
         req.params.id,
         req.body
       )
@@ -45,7 +45,7 @@ export default class ClientController {
 
   async deleteClient(req: Request, res: Response) {
     try {
-      const dbResponse = await this.reporsitory.deleteClientRepository(
+      const dbResponse = await this.reporsitory.deleteClient(
         req.params.id
       )
       return res.json(dbResponse)

@@ -26,7 +26,7 @@ describe('GET /clients', () => {
 })
 
 describe('POST /clients', () => {
-  it('should return 200 OK', async () => {
+  it('should return 201 OK', async () => {
     const { path } = clientRouter.getRouterPath()
     const response = await request(server.getApp())
       .post(path)
@@ -41,6 +41,6 @@ describe('POST /clients', () => {
           street: 'Wall Street'
         }
       })
-    expect(response.status).toBe(200)
+    expect(response.status).toBe(201)
   })
 })
