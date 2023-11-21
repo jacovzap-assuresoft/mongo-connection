@@ -36,36 +36,28 @@ export default class ClientRouter implements ModelRouter {
     * /clients:
     *   post:
     *     description: Creates a client
-    *     requestBody:
-    *       required: true
-    *       content:
-    *         application/json:
-    *           schema:
+    *     parameters:
+    *       - in: body
+    *         type: object
+    *         properties:
+    *           name:
+    *             type: string
+    *           lastName:
+    *             type: string
+    *           phone:
+    *             type: string
+    *           address:
     *             type: object
     *             properties:
-    *               name:
+    *               city:
     *                 type: string
-    *               lastName:
+    *               zone:
     *                 type: string
-    *               phone:
+    *               street:
     *                 type: string
-    *               address:
-    *                 type: object
-    *                 properties:
-    *                   city:
-    *                     type: string
-    *                   zone:
-    *                     type: string
-    *                   street:
-    *                     type: string
-    *             required:
-    *               - name
-    *               - lastName
-    *               - phone
-    *               - address
     *     responses:
     *       201:
-    *         description: Success
+    *         description: Success creation
     *       500:
     *         description: Server error
     */
@@ -82,9 +74,27 @@ export default class ClientRouter implements ModelRouter {
     *         description: ID of the client
     *         schema:
     *           type: string
+    *       - in: body
+    *         type: object
+    *         properties:
+    *           name:
+    *             type: string
+    *           lastName:
+    *             type: string
+    *           phone:
+    *             type: string
+    *           address:
+    *             type: object
+    *             properties:
+    *               city:
+    *                 type: string
+    *               zone:
+    *                 type: string
+    *               street:
+    *                 type: string
     *     responses:
     *       200:
-    *         description: Success
+    *         description: Success edit
     *       500:
     *         description: Server error
     */
@@ -103,7 +113,7 @@ export default class ClientRouter implements ModelRouter {
     *           type: string
     *     responses:
     *       200:
-    *         description: Success
+    *         description: Success delete
     *       500:
     *         description: Server error
     */

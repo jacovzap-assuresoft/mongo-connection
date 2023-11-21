@@ -3,7 +3,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import swaggerUi from 'swagger-ui-express'
 
-import swaggerSpecs from '../swagger' // Path to your Swagger configuration file
+import swaggerSpecs from '../swagger'
 import './config/db.config' // Mongo connection init
 
 import { RouterPath } from './types/types'
