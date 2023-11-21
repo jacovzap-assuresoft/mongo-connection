@@ -13,7 +13,7 @@ export default class ClientController {
     this.deleteClient = this.deleteClient.bind(this)
   }
 
-  async getAllClients(req: Request, res: Response) {
+  async getAllClients(_req: Request, res: Response) {
     try {
       const clients = await this.reporsitory.getAllClientsRepository()
       return res.status(200).json(clients)
